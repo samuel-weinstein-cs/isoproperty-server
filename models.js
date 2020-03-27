@@ -34,5 +34,10 @@ Listing.init({
   description: Sequelize.TEXT
 },{
   sequelize,
-  modelName: 'user'
+  modelName: 'listing'
 })
+
+module.exports = {
+  Listing,
+  sequelize
+}
