@@ -4,6 +4,9 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 
+//include routes
+const userRouter=require('./routes/listingRouter.js');
+
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
