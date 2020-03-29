@@ -25,6 +25,7 @@ Listing.init({
   address: Sequelize.STRING,
   address2: Sequelize.STRING,
   state: Sequelize.STRING(2),
+  city: Sequelize.STRING,
   zip: Sequelize.STRING(5),
   price: Sequelize.INTEGER,
   rental: Sequelize.BOOLEAN,
