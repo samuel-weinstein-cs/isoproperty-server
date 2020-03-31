@@ -20,6 +20,7 @@ if(process.env.DATABASE_URL){
 }
 
 class Listing extends Model {}
+class Agent extends Model {}
 
 Listing.init({
   address: Sequelize.STRING,
@@ -38,7 +39,18 @@ Listing.init({
   modelName: 'listing'
 })
 
+Agent.init({
+  name: Sequelize.STRING,
+  password_digest: Sequelize.STRING,
+  description: Sequelize.TEXT,
+  email: Sequelize.STRING,
+  phone: Sequelize.STRING,
+  mobile: Sequelize.STRING,
+})
+
+
 module.exports = {
   Listing,
+  Agent,
   sequelize
 }
