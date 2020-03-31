@@ -12,7 +12,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(logger('dev'));
 
-app.use("/", listingRouter);
+app.use("/listings", listingRouter);
 
 app.listen(PORT, () => {
   console.log(`Listening on port: ${PORT}`);
