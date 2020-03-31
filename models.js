@@ -46,6 +46,9 @@ Agent.init({
   email: Sequelize.STRING,
   phone: Sequelize.STRING,
   mobile: Sequelize.STRING,
+},{
+  sequelize,
+  modelName: 'agent'
 })
 
 
