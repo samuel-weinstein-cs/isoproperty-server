@@ -7,7 +7,8 @@ const logger = require('morgan');
 //include routes
 const listingRouter=require('./routes/listingRouter.js');
 const agentRouter=require('./routes/agentRouter.js');
-
+const s3 = require('./services/awsS3.js');
+const {restrict} = require('./services/auth.js');
 
 const app = express();
 app.use(cors());
@@ -16,6 +17,8 @@ app.use(logger('dev'));
 
 app.use("/listings", listingRouter);
 app.use("/agents", agentRouter);
+
+app.post('/sign_image', restrict, s3.sign);
 
 app.listen(PORT, () => {
   console.log(`Listening on port: ${PORT}`);
