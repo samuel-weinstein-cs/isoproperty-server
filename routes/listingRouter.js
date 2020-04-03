@@ -2,11 +2,12 @@ const { Router } = require('express');
 const { Listing } = require('../models.js');
 const listingRouter = Router();
 const { restrict } = require('../services/auth.js')
+const imageRouter = require('./imageRouter.js');
 
 listingRouter.get('/', async (req, res) => {
   try {
     const listings = await Listing.findAll();
-    res.json(listings);
+    res.json({listings});
   } catch(e) {
     console.error(e);
     next(e);
@@ -21,6 +22,11 @@ listingRouter.post('/', restrict, async (req, res, next) => {
     next(e)
   }
 })
+
+listingRouter.use('/:id/image',(req, res, next)=> {
+  res.locals.listingId = req.params.id;
+  next();
+}, imageRouter);
 
 listingRouter.route("/:id")
   .get(async (req, res, next) => {

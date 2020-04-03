@@ -7,6 +7,8 @@ const logger = require('morgan');
 //include routes
 const listingRouter=require('./routes/listingRouter.js');
 const agentRouter=require('./routes/agentRouter.js');
+
+//include services
 const s3 = require('./services/awsS3.js');
 const {restrict} = require('./services/auth.js');
 
