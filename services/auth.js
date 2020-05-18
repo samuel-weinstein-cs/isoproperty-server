@@ -3,6 +3,9 @@ const jwt = require('jsonwebtoken');
 
 const SALT_ROUNDS = 11;
 const TOKEN_KEY = 'freshman despair';
+const OPTIONS = {
+  expiresIn : "1 day",
+}
 
 const hashPassword = async (password) => {
   const digest = await bcrypt.hash(password, SALT_ROUNDS);
@@ -17,7 +20,7 @@ const checkPassword = async (password, password_digest) => {
 }
 
 const genToken = (data) => {
-  const token = jwt.sign(data, TOKEN_KEY);
+  const token = jwt.sign(data, TOKEN_KEY, OPTIONS);
   return token;
 };
 

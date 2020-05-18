@@ -22,6 +22,11 @@ app.use("/agents", agentRouter);
 
 app.post('/sign_image', restrict, s3.sign);
 
+app.use((err, req, res, next) => { //Error Handling
+  console.error(err.stack);
+  res.status(500).send(err.message);
+});
+
 app.listen(PORT, () => {
   console.log(`Listening on port: ${PORT}`);
 })
