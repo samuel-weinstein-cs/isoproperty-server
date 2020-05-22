@@ -31,6 +31,8 @@ agentRouter.get("/", async (req, res) => {
   }
 })
 
+
+
 agentRouter.post('/' , restrict, async (req, res, next) => {
   try {
     const { name, description, email, phone, mobile } = req.body;
@@ -56,6 +58,12 @@ agentRouter.post('/' , restrict, async (req, res, next) => {
   }
 })
 
+agentRouter.get("/verify", restrict, (req, res) => {
+  const agent = res.locals.agent;
+
+  res.json(agent)
+})
+
 agentRouter.post('/login', async (req, res) => {
   try {
     const agent = await Agent.findOne({
@@ -74,6 +82,7 @@ agentRouter.post('/login', async (req, res) => {
     next(e);
   }
 })
+
 
 agentRouter.put('/:id', restrict, async (req, res, next) => {
   try {
