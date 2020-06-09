@@ -22,6 +22,8 @@ if(process.env.DATABASE_URL){
 class Listing extends Model {}
 class Agent extends Model {}
 class Image extends Model {}
+class About extends Model {}
+
 
 Listing.init({
   address: Sequelize.STRING,
@@ -61,6 +63,13 @@ Image.init({
   modelName: 'image'
 })
 
+About.init({
+  text: Sequelize.TEXT
+},{
+  sequelize,
+  modelName: 'about'
+})
+
 Listing.hasMany(Image, { onDelete: 'cascade' });
 Image.belongsTo(Listing);
 
@@ -68,5 +77,6 @@ module.exports = {
   Listing,
   Agent,
   Image,
-  sequelize
+  About,
+  sequelize,
 }

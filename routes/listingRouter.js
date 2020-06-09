@@ -1,8 +1,10 @@
 const { Router } = require('express');
 const { Listing } = require('../models.js');
-const listingRouter = Router();
-const { restrict } = require('../services/auth.js')
+const { restrict } = require('../services/auth.js');
 const imageRouter = require('./imageRouter.js');
+
+
+const listingRouter = Router();
 
 listingRouter.get('/', async (req, res) => {
   try {

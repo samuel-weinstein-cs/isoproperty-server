@@ -7,6 +7,8 @@ const logger = require('morgan');
 //include routes
 const listingRouter=require('./routes/listingRouter.js');
 const agentRouter=require('./routes/agentRouter.js');
+const aboutRouter=require('./routes/aboutRouter.js');
+
 
 //include services
 const s3 = require('./services/awsS3.js');
@@ -19,6 +21,7 @@ app.use(logger('dev'));
 
 app.use("/listings", listingRouter);
 app.use("/agents", agentRouter);
+app.use("/about", aboutRouter);
 
 app.post('/sign_image', restrict, s3.sign);
 
