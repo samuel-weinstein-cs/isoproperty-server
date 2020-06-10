@@ -15,4 +15,15 @@ aboutRouter.get('/', async (req, res) => {
   }
 })
 
+aboutRouter.put('/', async (req, res) => {
+  try {
+    const about = await About.findByPk(1);
+    await about.update(req.body);
+    res.json({text: about.text});
+  } catch(e) {
+    console.error(e);
+    next(e);
+  }
+})
+
 module.exports = aboutRouter;
