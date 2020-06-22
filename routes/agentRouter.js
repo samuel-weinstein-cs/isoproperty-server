@@ -21,10 +21,10 @@ const buildAuthResponse = (agent) => {
 
 agentRouter.get("/", async (req, res) => {
   try {
-    const agents = await Agent.findAll(/*{
-      attributes: ['name', 'description', 'email', 'phone', 'mobile' ]
-    }*/);
-    res.json(agents);
+    const agents = await Agent.findAll({
+      attributes: {exclude: ["password_digest"]}
+    });
+    res.json({agents});
   } catch(e) {
     console.error(e);
     next(e);
